@@ -1,7 +1,7 @@
 const deleteBtn = document.querySelectorAll('.fa-trash') // creates a variable and assigning it to a selectionof all elements with a class of "fa-trash"
 const item = document.querySelectorAll('.item span') // creates a variable and assigning it to a selection of span tags inside of a parent that has the class of "item "
 const itemCompleted = document.querySelectorAll('.item span.completed') // creates a variable and assigning it to a selection of spans with a class of "completed" inside a parent with the class of "item"
-
+// 2:46:54
 Array.from(deleteBtn).forEach((element)=>{
     element.addEventListener('click', deleteItem)
 })
