@@ -1,22 +1,22 @@
 const deleteBtn = document.querySelectorAll('.fa-trash') // creates a variable and assigning it to a selectionof all elements with a class of "fa-trash"
 const item = document.querySelectorAll('.item span') // creates a variable and assigning it to a selection of span tags inside of a parent that has the class of "item "
 const itemCompleted = document.querySelectorAll('.item span.completed') // creates a variable and assigning it to a selection of spans with a class of "completed" inside a parent with the class of "item"
-// 2:46:54
-Array.from(deleteBtn).forEach((element)=>{
-    element.addEventListener('click', deleteItem)
-})
 
-Array.from(item).forEach((element)=>{
-    element.addEventListener('click', markComplete)
-})
+Array.from(deleteBtn).forEach((element)=>{ // creating an array from our selection of trash icons and starting a loop
+    element.addEventListener('click', deleteItem) // adds an event listener to the current item that waits for a click and then calls the deleteItem function
+}) // close our loop
 
-Array.from(itemCompleted).forEach((element)=>{
-    element.addEventListener('click', markUnComplete)
-})
+Array.from(item).forEach((element)=>{ // creating an array from our selection of "items" and starting a loop
+    element.addEventListener('click', markComplete) // adds an event listener to the current item that waits for a click and then calls the markComplete function
+}) // close our loop
 
-async function deleteItem(){
-    const itemText = this.parentNode.childNodes[1].innerText
-    try{
+Array.from(itemCompleted).forEach((element)=>{ // creates an array from our selection of itemCompleted and starts a loop
+    element.addEventListener('click', markUnComplete) // adds an event listener to ONLY completed items and waits for a click and then calls the markUnComplete function 
+}) // close our loop
+
+async function deleteItem(){ // declaring an asynchronous function called deleteItem (allows other code to run until function finishes)
+    const itemText = this.parentNode.childNodes[1].innerText // looks inside of the list item and grabs only the inner text within the list span
+    try{ // starting a try block
         const response = await fetch('deleteItem', {
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
